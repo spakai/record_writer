@@ -15,6 +15,7 @@ recursive template pattern. The code is from the book C++ Recipes by Bruce Suthe
 Semaphore 
 - I've used The Little Book of Semaphores by Allen Downey as reference .
 - There are 3 rules 
+
 A semaphore is like an integer, with three differences:
 
 1.When you create the semaphore, you can initialize its value to any integer,
