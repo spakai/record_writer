@@ -1,7 +1,24 @@
 #include "gmock/gmock.h" 
+#include "Singleton.h"
 
 using namespace testing;
 
-TEST(SingletonTest,NoMatchLookup) {
-    ASSERT_THAT(1,Eq(1));
+TEST(SingletonTest,CheckIfObjectIsSame) {
+
+    class SingletonTest : public Singleton<SingletonTest> 
+    {
+        private:
+            int value;
+        public:
+            void setVar(int value) { this->value = value; };
+            int getVar() { return value;};
+
+    };
+
+    new SingletonTest();
+    SingletonTest &singletonTest { SingletonTest::GetSingleton() };     
+    singletonTest.setVar(120578);
+    SingletonTest &anotherSingleton { SingletonTest::GetSingleton() };     
+    ASSERT_THAT(singletonTest.getVar(),Eq(anotherSingleton.getVar()));
+
 }
